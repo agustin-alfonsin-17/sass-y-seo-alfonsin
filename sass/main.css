@@ -1,0 +1,200 @@
+/* mixin */
+.btn--default {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px solid rgb(236, 123, 123);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: tomato;
+}
+
+.btn--secundario {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px solid rgb(236, 123, 123);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: blue;
+}
+
+body {
+  background-color: black;
+  color: #ffffff;
+}
+
+.elementos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+.elementos .element .title {
+  background-color: gray;
+  color: black;
+}
+.elementos .extend, .elementos .extend--color {
+  color: #ef0d15;
+  padding: 20px;
+  background-color: yellow;
+  width: 300px;
+  display: inline-flex;
+}
+.elementos .extend--color {
+  background-color: #080808;
+  border: 2px solid blue;
+}
+
+.burger {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #ef0d15;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.burger-inner-line {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 29px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+.burger-inner-line:nth-child(2) {
+  position: relative;
+}
+.burger-inner-line:first-child {
+  bottom: 6px;
+  transition: bottom 250ms 250ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.burger-inner-line:last-child {
+  top: 6px;
+  transition: top 250ms 250ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.toggled .burger-inner-line:nth-child(2) {
+  background-color: transparent;
+}
+.toggled .burger-inner-line:first-child {
+  bottom: 0;
+  transform: rotate(-45deg);
+  transition: bottom 250ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.toggled .burger-inner-line:last-child {
+  top: 0;
+  transform: rotate(45deg);
+  transition: top 250ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wrapper-main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem 9rem;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.main-nav {
+  width: 100%;
+  display: flex;
+  max-width: 1182px;
+  margin: 0 auto;
+}
+.main-nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main-nav-item {
+  opacity: 0;
+  transition: all 600ms ease 100ms;
+}
+.main-nav-item:nth-child(1) {
+  transform: translateX(40px);
+}
+.main-nav-item:nth-child(2) {
+  transform: translateX(80px);
+}
+.main-nav-item:nth-child(3) {
+  transform: translateX(120px);
+}
+.main-nav-item:nth-child(4) {
+  transform: translateX(160px);
+}
+.main-nav-item:nth-child(5) {
+  transform: translateX(200px);
+}
+.main-nav-item:not(:last-child) {
+  margin-bottom: 24px;
+}
+.main-nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 3.75rem;
+}
+
+.nav-bg {
+  width: 100vw;
+  height: 33.3333vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: background-position 760ms ease 700ms, transform 760ms ease 1260ms, visibility 760ms ease 1260ms;
+  visibility: hidden;
+}
+.nav-bg.top {
+  transform: translateY(-33.3333vh);
+  background: linear-gradient(to top, #1d1d1d 50%, #ef0d15 50%);
+  background-size: 100% 200%;
+  background-position: -100% 100%;
+}
+.nav-bg.middle {
+  transform: translateY(33.3333vh) scaleY(0);
+  background-color: #ef0d15;
+}
+.nav-bg.bottom {
+  transform: translateY(100vh);
+  background: linear-gradient(to bottom, #ef0d15 50%, #1d1d1d 50%);
+  background-size: 100% 200%;
+  background-position: 0 -100%;
+}
+
+.wrapper-main-nav.active {
+  visibility: visible;
+}
+.wrapper-main-nav.active .main-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 600ms ease 1520ms;
+}
+.wrapper-main-nav.active .nav-bg {
+  visibility: visible;
+  transition: transform 760ms 200ms, background-position 760ms 760ms;
+}
+.wrapper-main-nav.active .nav-bg.top {
+  transform: translateY(0);
+  background-position: 0 0;
+}
+.wrapper-main-nav.active .nav-bg.middle {
+  transform: translateY(33.3333vh) scaleY(1.1);
+}
+.wrapper-main-nav.active .nav-bg.bottom {
+  transform: translateY(66.6666vh);
+  background-position: 0 0;
+}/*# sourceMappingURL=main.css.map */

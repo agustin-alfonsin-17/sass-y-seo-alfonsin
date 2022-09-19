@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sass/main.css">
+    <!--SEO-->
+    <title>CeramicaNB</title>
+    <meta name="description" content="tienda online de ceramica">
+    <meta name="keywords" content="tazas, platos, recipientes, teteras">
+</head>
+<body>
+    
+    <button id="triggerMenu" class="burger trigger-menu">
+        <div class="burger-inner">
+            <span class="burger-inner-line"></span>
+            <span class="burger-inner-line"></span>
+            <span class="burger-inner-line"></span>
+        </div>
+    </button>
+
+    <div id="mainNav" class="wrapper-main-nav">
+        <i class="nav-bg top"></i>
+        <i class="nav-bg middle"></i>
+        <i class="nav-bg bottom"></i>
+
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li class="main-nav-item">
+                    <a class="main-nav-link" href="./index.html">
+                        INICIO
+                    </a>
+                </li>
+
+                <li class="main-nav-item">
+                    <a class="main-nav-link" href="./index.html">
+                        TIENDA
+                    </a>
+                </li>
+
+                <li class="main-nav-item">
+                    <a class="main-nav-link" href="./index.html">
+                        CONTACTO
+                    </a>
+                </li>
+
+                <li class="main-nav-item">
+                    <a class="main-nav-link" href="./index.html">
+                        CUENTA
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </nav>
+
+
+
+    </div>
+
+
+    <div>
+        <a href="./index.html" class="btn--default">Click aqui</a>
+        <a href="./index.html" class="btn--secundario">Contacto</a>
+    </div>
+
+
+    <div class="elementos">
+        <div class="element">
+            <h1 class="title">
+                Tienda de <strong>Ceramica</strong> 
+            </h1>
+        
+
+       
+            <p class="extend">
+                Aca vas a encontrar todos mis trabajos realizados con mis propias manos
+            </p>
+        
+            <p class="extend--color">
+                Desplega el menu en la parte superior derecha y vas a tener todos los atajos de la web!
+            </p>
+        
+        </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        const triggerMenu = document.getElementById('triggerMenu');
+        const mainNav = document.getElementById('mainNav')
+
+        triggerMenu.addEventListener('click', function () {
+            triggerMenu.classList.toggle('toggled')
+            mainNav.classList.toggle('active')
+        } )
+    </script>
+
+
+
+</body>
+</html>

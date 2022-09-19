@@ -1,0 +1,240 @@
+
+
+
+$red-1: #ef0d15;
+$bezier-t: cubic-bezier(0.23, 1, 0.32, 1);
+$blue-1: blue;
+
+$colores: (
+    main: gray,
+    base: yellow,
+    back: black,
+);
+
+/* mixin */
+
+@mixin btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px solid rgb(236, 123, 123);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.btn--default{
+    @include btn;
+    background-color: tomato;
+}
+.btn--secundario{
+    @include btn;
+    background-color: $blue-1;
+}
+
+
+
+body{
+    background-color: black;
+    color: #ffffff;
+}
+
+.elementos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    .element .title{
+        background-color: map-get($colores, main);
+        color: map-get($colores, back);
+    }
+    .extend{
+        color: $red-1;
+        padding: 20px;
+        background-color: map-get($colores, base );
+        width: 300px;
+        display: inline-flex
+        
+        
+    }
+    .extend--color{
+        @extend .extend;
+        background-color: #080808;
+        border: 2px solid $blue-1;
+    }
+}
+
+
+.burger{
+   width: 50px;
+   height: 50px;
+   display: grid;
+   place-items: center;
+   cursor: pointer;
+   border: 0;
+   padding: 0;
+   margin: 0;
+   background-color: $red-1;
+   position: fixed;
+   top: 0;
+   right: 0;
+   z-index: 20;
+}
+
+.burger-inner-line{
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 29px;
+    margin: 0 auto;
+    background-color: #ffffff;
+
+
+&:nth-child(2){
+    position: relative;
+}
+
+&:first-child{
+    bottom: 6px;
+    transition: bottom 250ms 250ms $bezier-t, transform 250ms 
+    $bezier-t;
+}
+
+&:last-child{
+    top: 6px;
+    transition: top 250ms 250ms $bezier-t, transform 250ms
+     $bezier-t;
+}
+}
+
+.toggled .burger-inner-line{
+    &:nth-child(2){
+        background-color: transparent;
+        }
+
+        &:first-child{
+            bottom: 0;
+            transform: rotate(-45deg);
+            transition: bottom 250ms $bezier-t, transform 250ms 250ms 
+            $bezier-t;
+        }
+    
+    &:last-child{
+        top: 0;
+        transform: rotate(45deg);
+        transition: top 250ms $bezier-t, transform 250ms 250ms 
+        $bezier-t;
+    }
+}
+
+.wrapper-main-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 2rem 1rem 9rem;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.main-nav {
+    width: 100%; 
+    display: flex;
+    max-width: 1182px;
+    margin: 0 auto;
+
+    &-list{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &-item{
+        opacity: 0;
+        transition: all 600ms ease 100ms;
+    
+
+    @for $i from 1 through 5 {
+        &:nth-child(#{ $i }){
+            transform: translateX(40px * $i);
+        }
+    }
+}
+
+    &-item:not(:last-child){
+        margin-bottom: 24px;
+    }
+
+    &-link{
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 3.75rem;
+    }
+}
+
+.nav-bg{
+    width: 100vw;
+    height: 33.3333vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: background-position 760ms ease 700ms,
+                transform 760ms ease 1260ms,
+                visibility 760ms ease 1260ms;
+    visibility: hidden;
+
+    &.top{
+        transform: translateY(-33.3333vh);
+        background: linear-gradient(to top, #1d1d1d 50%, $red-1 50%);
+        background-size: 100% 200%;
+        background-position: -100% 100%;
+    }
+
+    &.middle{
+        transform: translateY(33.3333vh) scaleY(0);
+        background-color: $red-1;
+    }
+
+    &.bottom{
+        transform: translateY(100vh);
+        background: linear-gradient(to bottom, $red-1 50%, #1d1d1d 50%);
+        background-size: 100% 200%;
+        background-position: 0 -100%;
+    }
+}
+
+.wrapper-main-nav.active{
+    visibility: visible;
+
+    .main-nav-item{
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 600ms ease 1520ms;
+    }
+
+    .nav-bg{
+        visibility: visible;
+        transition: transform 760ms 200ms, background-position 760ms
+        760ms;
+    
+        &.top{
+            transform: translateY(0);
+            background-position: 0 0;
+        }
+
+        &.middle{
+            transform: translateY(33.3333vh) scaleY(1.1);
+        }
+
+        &.bottom{
+            transform: translateY(66.6666vh);
+            background-position: 0 0;
+        }
+       
+    }
+    
+}
